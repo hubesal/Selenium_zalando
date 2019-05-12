@@ -9,7 +9,6 @@ TONEWSLETTER_CSS_SEL = 'div.z-navigation-footer_trackingWrap:nth-child(8) > a:nt
 MENSFASSHIONBUTTON_XPATH = "/html/body/div[4]/div[3]/div/div[2]/div/div[3]/div[1]/div/div[2]/label"
 EMAILFIELD_XPATH = '//*[starts-with(@id, "email")]'
 SAVEBUTTON_XPATH = '/html/body/div[4]/div[3]/div/div[2]/div/form/button/span'
-ERRORMSG_XPATH = '/html/body/div[4]/div[3]/div/div[2]/div/form/div/div/div/span[2]'
 
 timeOut = 20
 
@@ -36,8 +35,6 @@ class TestZalando(unittest.TestCase):
         WebDriverWait(self.driver, timeOut).until(EC.element_to_be_clickable((By.XPATH, SAVEBUTTON_XPATH)))
         saveButton = self.driver.find_element_by_xpath(SAVEBUTTON_XPATH)
         saveButton.click()
-
-        self.driver.implicitly_wait(60)
 
         ErrorMessage = emailField.get_attribute('validationMessage')
         self.assertEqual(ErrorMessage, "Please enter an email address.")
